@@ -1,5 +1,4 @@
-import { createElement, createModal, formatDate } from './utilities.js';
-import { employees } from './index.js';
+import { createElement, formatDate } from './utilities.js';
 
 export const fetchEmployees = async () => {
     const url = 'https://randomuser.me/api/?results=12';
@@ -16,9 +15,6 @@ export const createEmployeeCard = (employee) => {
     const emailRef = createElement({ element: 'p', content: employee.email, attr: [{ class: 'card-text' }] });
     const otherInfoRef = createElement({ element: 'p', content: `${employee.location.city}, ${employee.location.state}`, attr: [{ class: 'card-text cap' }] });
 
-    profilePictureRef.addEventListener('click', () => { createEmployeeModal(employee); addModalContent(employee) });
-    nameRef.addEventListener('click', () => { createEmployeeModal(employee); addModalContent(employee) });
-
     cardImgContainerRef.appendChild(profilePictureRef);
     cardInfoContainerRef.appendChild(nameRef);
     cardInfoContainerRef.appendChild(emailRef);
@@ -29,25 +25,7 @@ export const createEmployeeCard = (employee) => {
     return cardRef;
 }
 
-const createEmployeeModal = (employee) => {
-
-
-    const onPrevious = () => {
-        const index = employees.indexOf(employee);
-        addModalContent(employees[index - 1]);
-    }
-
-    const onNext = () => {
-        const index = employees.indexOf(employee);
-        addModalContent(employees[index + 1]);
-        console.log('clicked', employee.name.first)
-    }
-
-    const modal = createModal(onPrevious, onNext);
-    document.body.appendChild(modal);
-};
-
-const addModalContent = (employee) => {
+export const addModalContent = (employee) => {
     const modalRef = document.querySelector('.modal-info-container');
     modalRef.innerHTML = '';
 
