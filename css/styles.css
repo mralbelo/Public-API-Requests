@@ -16,7 +16,7 @@ html, body {
 body {
     font-family: "Nunito", sans-serif;
     text-align: center;
-    background: rgba(235, 235, 235, 0.9);
+    background: #0c0c10;
 }
 
 header {
@@ -29,35 +29,45 @@ header {
 }
 
 header h1 {
-    font-size: 1.25em;
-    color: rgba(50, 50, 50, 0.9);
-    margin-top: 35px;
+    text-align: center;
+    background: linear-gradient(to right, rgb(255, 0, 149) 20%, rgb(0, 183, 255) 40%, rgb(0, 183, 255) 60%, rgb(255, 0, 149) 80%);
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    animation: shine 1s linear infinite;
 }
 
 .search-input {
     padding: 0.4rem 1rem;
-    border: 1px solid rgba(200, 200, 200, 0.9);
-    border-radius: 0.25rem 0 0 0.25rem ;
+    border: 1px solid rgb(255 255 255 / 14%);
+    background: #ffffff14;
+    color: white;
+    border-radius: 0.25rem 0 0 0.25rem;
     max-width: 20rem;
     transition: .4s ease-out;
+    outline: none;
 }
 
 .search-input:active, .search-input:hover, .search-input:focus {
-    border: 1px solid rgba(50, 50, 50, 0.9);
+    border-color: rgb(255 255 255 / 30%);
+    box-shadow: inset #ffffff24 0px 13px 11px 0px;
 }
 
 .search-submit {
     cursor: pointer;
     height: 33px;
-    background: rgba(245, 245, 245, 0.9);
+    background: rgb(255 255 255 / 45%);
     border-radius: 0 0.25rem 0.25rem 0;
-    border: 1px solid rgba(200, 200, 200, 0.9);
+    border: 1px solid rgb(255 255 255 / 42%);
     transition: .4s ease-out;
 }
 
 .search-submit:active, .search-submit:hover, .search-submit:focus {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(50, 50, 50, 0.9);
+    box-shadow: inset #ffffff82 0px 20px 7px -10px;
 }
 
 
@@ -85,8 +95,8 @@ header h1 {
     max-width: 360px;
     margin: 10px 10px 20px;
     padding: 10px;
-    background: rgba(245, 245, 245, 0.9);
-    border-radius: 0.25em;
+    background: #ffffff0a;
+    border-radius: 0.75em;
     border: 1px solid rgba(50, 50, 50, 0.3);
     transition: .4s ease-out;
     overflow: hidden;
@@ -104,11 +114,12 @@ header h1 {
 
 .card-name {
     margin: 20px auto 0;
+    color: #fff;
 }
 
 .card-text {
     font-size: 0.9em;
-    color: rgba(50, 50, 50, 0.7);
+    color: rgba(255, 255, 255, 0.205);
     margin: 7px auto;
     transition: .4s ease-out;
 }
@@ -138,10 +149,12 @@ header h1 {
     min-height: 415px;
     margin: 10px auto auto;
     padding-bottom: 15px;
-    background: rgba(255, 255, 255, 1);
+    background: rgb(255 255 255 / 8%);
     border-radius: 0.25em;
-    border: 1px solid rgba(100, 100, 100, 0.3);
+    border: 1px solid rgb(255 255 255 / 8%);
     transition: .4s ease-out;
+    box-shadow: black 0px 15px 20px, inset #ffffff14 0px -4px 0px;
+    backdrop-filter: blur(14px);
 }
 
 .modal-close-btn {
@@ -150,9 +163,10 @@ header h1 {
     right: 15px;
     cursor: pointer;
     color: rgba(255, 255, 255, 0.9);
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 0.25em;
-    border: 1px solid rgba(50, 50, 50, 0.3);
+    background: rgb(255 255 255 / 5%);
+    border-radius: 2em;
+    padding: .5em .75em;
+    border: 1px solid rgb(50 50 50 / 61%);
 }
 
 .modal-img {
@@ -166,7 +180,7 @@ header h1 {
 }
 
 .modal-text {
-    color: rgba(50, 50, 50, 0.7);
+    color: rgba(255, 255, 255, 0.7);
     margin: 10px;
 }
 
@@ -185,7 +199,7 @@ header h1 {
     max-width: 420px;
     padding: 10px 15px 15px;;
     margin: 10px auto auto;
-    background: rgba(255, 255, 255, 1);
+    background: rgb(255 255 255 / 8%);
     border-radius: 0.25em;
     border: 1px solid rgba(100, 100, 100, 0.3);
 }
@@ -198,9 +212,10 @@ header h1 {
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.9);
     padding: 0.75em 1.5em;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 0.35em;
+    background: rgb(255 255 255 / 15%);
+    border-radius: 2em;
     transition: .4s ease-out;
+    border-color: #ffffff59 #0202027a #0202027a #ffffff59;
   }
   
 
@@ -244,16 +259,45 @@ header h1 {
 @media (min-width: 1024px) {
 
     .card:hover {
-        background: rgba(255, 255, 255, 1);
-        border: 1px solid rgba(50, 50, 50, 0.9);
+        background: #ffffff14;
+        transform: translateY(-5px);
+        box-shadow: #0000004f 0px 11px 17px;
+        border-color: #ffffff17;
+    }
+    .card:hover:after {
+        content: '';
+        height: 50%;
+        width: 100%;
+        margin: -10px;
+        pointer-events: none;
+        background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.24) 0%, rgba(255,255,255,0) 100%);
+        position: absolute;
     }
 
     .card:hover .card-text {
-        color: rgba(25, 25, 25, 1); 
+        color: rgba(255, 255, 255, 0.267);
     }
 
     .btn:hover {
-        background: rgba(255, 255, 255, 1);
-        color: rgba(25, 25, 25, 1); 
+        position: relative;
+        color: rgb(255 255 255);
+    }
+    .btn:hover:before {
+        background: rgb(255 255 255 / 28%);
+        color: rgb(255 255 255);
+        content: '';
+        height: 50%;
+        width: 100%;
+        border-radius: 2em;
+        margin: -0.75em -1.5em;
+        pointer-events: none;
+        background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.24) 0%, rgba(255,255,255,0) 100%);
+        position: absolute;
+    }
+}
+
+@keyframes shine {
+    to {
+    background-position: 200% center;
     }
 }

@@ -1,11 +1,20 @@
-import { createElement, formatDate } from './utilities.js';
+import { createElement, formatDate, formatPhoneNumber } from './utilities.js';
 
+/**
+ * This method fetches employees from api `https://randomuser.me`
+ * @returns JSON of employee data
+ */
 export const fetchEmployees = async () => {
-    const url = 'https://randomuser.me/api/?results=12';
+    const url = 'https://randomuser.me/api/?nat=us&results=12';
     const res = await fetch(url);
     return await res.json();
 };
 
+/**
+ * This method creates a employee HTML card and returns it, invoker is responsible of adding it to DOM
+ * @param {*} employee complete object of employee
+ * @returns HTML element
+ */
 export const createEmployeeCard = (employee) => {
     const cardRef = createElement({ element: 'div', attr: [{ class: 'card' }, { id: employee.login.uuid }] });
     const profilePictureRef = createElement({ element: 'img', attr: [{ class: 'card-img' }, { src: employee.picture.large }, { alt: 'profile picture' }] });
@@ -25,6 +34,10 @@ export const createEmployeeCard = (employee) => {
     return cardRef;
 }
 
+/**
+ * This method accepts the employee object, formats the data & adds the content to the modal which invoker should already had initialized
+ * @param {*} employee 
+ */
 export const addModalContent = (employee) => {
     const modalRef = document.querySelector('.modal-info-container');
     modalRef.innerHTML = '';
@@ -35,7 +48,7 @@ export const addModalContent = (employee) => {
         createElement({ element: 'p', content: employee.email, attr: [{ class: 'modal-text' }] }),
         createElement({ element: 'p', content: employee.location.city, attr: [{ class: 'modal-text cap' }] }),
         document.createElement('hr'),
-        createElement({ element: 'p', content: employee.phone, attr: [{ class: 'modal-text' }] }),
+        createElement({ element: 'p', content: formatPhoneNumber(employee.phone), attr: [{ class: 'modal-text' }] }),
         createElement({ element: 'p', content: `${employee.location.street.number} ${employee.location.street.name}, ${employee.location.city}, ${employee.location.postcode} `, attr: [{ class: 'modal-text' }] }),
         createElement({ element: 'p', content: `Birthday: ${formatDate(employee.dob.date)}`, attr: [{ class: 'modal-text' }] })
     ];
